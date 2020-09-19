@@ -1,9 +1,10 @@
 const Doctor = require("../../../models/doctors");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 // creating a new doctor with these informations
 module.exports.create = async function (request, response) {
-  console.log("doctor signup form body", request.body);
+  // console.log("doctor signup form body", request.body);
   if (request.body["password"] != request.body["confirm-password"]) {
     console.log("password and confirm password did not matched");
 
@@ -15,7 +16,12 @@ module.exports.create = async function (request, response) {
   try {
     let doctor = await Doctor.findOne({ username: request.body.username });
     if (!doctor) {
-      let doctor = await Doctor.create(request.body);
+      const hashedPassword = await bcrypt.hash(request.body.password, 10);
+      let doctor = await Doctor.create({
+        username: request.body.username,
+        password: hashedPassword,
+        name: request.body.name,
+      });
       console.log("Dcotro created successfully");
       return response.status(200).json({
         message: "Doctor Signup success",

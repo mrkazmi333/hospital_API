@@ -1,4 +1,5 @@
 const passport = require("passport");
+const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local").Strategy;
 
 const Doctor = require("../models/doctors");
@@ -17,7 +18,7 @@ passport.use(
           request.code = 500;
           return done(err);
         }
-        if (!doctor || doctor.password != password) {
+        if (!doctor || !bcrypt.compare(password, doctor.password)) {
           console.log("Username/password not matched");
           request.code = 401;
           request.info = "Username/password not matched";
