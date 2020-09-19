@@ -68,7 +68,7 @@ Once you have all the requirements checked out, you can develop this project. Yo
   npm start
   ```
 
-#### Functionalities
+### Functionalities
 
 1. Register a Doctor with username, name and password.
 2. Doctor login(User) we are authenticating the doctor usinf passport which then returns a jwt for upcoming requests which needs authoriztion.
@@ -82,25 +82,31 @@ Once you have all the requirements checked out, you can develop this project. Yo
 #### Base URL: `http://localhost:8000/api/v1/`
 
 1. `/doctors/register` (Request Type: POST) Doctor registration, Registring a new doctor with 'name', 'username', 'password', 'confirm password'.
+   <br>
    Example of request with Output:
-   ![Doctor Registration](/assests/doctor_register.png)
+   ![Doctor Registration](/assets/doctor_register.png)
 
 2. `/doctors/login`(Request Type: POST) Logging in the Dcotor with 'username' and 'password', Getting json web token token in response for using it for authorization while sending further requests.
-   Example of request with outpur:
+   <br>
+   Example of request with output response:
    ![Doctor Login](/assets/doctor_login.png)
 
 3. `patients/register` (Request Type: POST) Authorization required, Registring apatient using 'mobile' numebr and 'name'. When a doctor is logged in then only a patient can be registered by that doctor using the athorization token received while logging in.
-   Example of Patient registartion request with sample output:
+   <br>
+   Example of Patient registartion request with sample output response:
    ![Patient Registration](/assets/patients_register.png)
 
 4. `patients/:id/create_report` (Request Type: POST) Authorization required, A doctor can create a new report of a particular registered patient using its `id` (mobile number) while sending the Status in form body.
+   <br>
    Example of Report creation of a patient with output response:
    ![Report created](/assets/create_report.png)
 
 5. `patients/:id/all_reports` (Request Type: GET) Authorization Required, ALl the reports of a particular patient can be fetched using this end point url by a registered doctor by providing their id in params.
-   Example of All reports of a patient:
+   <br>
+   Example of All reports of a patient with output response:
    ![All rpeorts of patient](/assets/get_all_reports.png)
 
 6. `reports/:status` (Request Type: GET) Authroization required, A doctor can get all the reports with a particular status provided in the params.
    Example of Reports filtered by status with output response:
+   <br>
    ![Reports by status](/assets/reports_by_status.png)
