@@ -104,7 +104,7 @@ Once you have all the requirements checked out, you can develop this project. Yo
 5. `patients/:id/all_reports` (Request Type: GET) Authorization Required, ALl the reports of a particular patient can be fetched using this end point url by a registered doctor by providing their id in params.
    <br>
    Example of All reports of a patient with output response:
-   ![All rpeorts of patient](/assets/get_all_reports.png)
+   ![All rpeorts of patient](/assets/get_all_report.png)
 
 6. `reports/:status` (Request Type: GET) Authroization required, A doctor can get all the reports with a particular status provided in the params.
    Example of Reports filtered by status with output response:
